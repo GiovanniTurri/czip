@@ -1,0 +1,159 @@
+{
+  "version": "1.0",
+  "payload": {
+    "objects": [
+    {
+        "name": "video",
+        "position": { "x": -23.6, "y": 2, "z": 10},
+        "rotation": { "x": 0, "y": 180,"z": 0 },
+        "scale": { "x": 9.3, "y": 8,"z": 8 },
+        "components": [
+          {
+            "type": "mp.tuner",
+            "inputs": {
+              "urls": [
+                "https://mix.wear-mobile.com/matterport/canovabo/ottom.m3u8"
+              ]
+            },
+            "events": {
+              "next": true
+            }
+          },
+          {
+            "type": "mp.hlsLoader"
+          },
+          {
+            "type": "mp.videoRenderer"
+          },
+          {
+            "type": "mp.planeRenderer",
+            "inputs": {
+              "transparent": false,
+              "localScale": { "x": 0.6, "y": 0.6, "z": 0.6 },
+              "localPosition": { "x": 0, "y": 0, "z": 0 }
+            }
+          },
+          {
+            "type": "mp.toggleState",
+            "inputs": {
+              "initialState": false
+            }
+          },
+
+          {
+            "type": "mp.planeRenderer",
+            "inputs": {
+              "transparent": true,
+              "opacity": 0.8,
+              "localScale": { "x": 0, "y": 0, "z": 0}
+            }
+          },
+          {
+            "type": "mp.canvasRenderer",
+            "inputs": {
+              "textureRes": {
+                "w": 1024,
+                "h": 1024
+              }
+            }
+          },
+          {
+            "type": "mp.canvasBorder",
+            "inputs": {
+              "position": { "x": 0, "y": 0 },
+              "size": { "h": 1024, "w": 1024 },
+              "radius": 50
+            }
+          },
+
+          {
+            "type": "mp.planeRenderer",
+            "inputs": {
+              "localScale": { "x": 0.6, "y": 0.6, "z": 0.6 },
+              "transparent": true,
+              "opacity": 0.8,
+              "polygonOffset": true,
+              "polygonOffsetFactor": -2
+            }
+          },
+          {
+            "type": "mp.canvasRenderer",
+            "inputs": {
+              "textureRes": {
+                "w": 512,
+                "h": 512
+              }
+            }
+          },
+          {
+            "type": "mp.canvasText",
+            "inputs": {
+              "size": {
+                "h": 512,
+                "w": 512
+              },
+              "text": "Attendi il\n caricamento\n Click qui",
+              "font": "normal bold 40px sans-serif",
+              "position": { "x":270, "y": 325, "z": 0 },
+              "textWidth": 250
+            }
+          },
+
+          {
+            "type": "mp.planeRenderer",
+            "inputs": {
+              "localScale": { "x": 0.08, "y": 0.08, "z": 1.0 },
+              "localPosition": { "x": 0.22, "y": -0.13, "z": 0.01 }
+            },
+            "events": {
+              "INTERACTION.CLICK": true
+            }
+          },
+          {
+            "type": "mp.canvasRenderer",
+            "inputs": {
+              "textureRes": {
+                "w": 128,
+                "h": 128
+              }
+            }
+          },
+          {
+            "type": "mp.canvasImage",
+            "inputs": {
+              "src": "https://static.matterport.com/showcase-sdk/examples/assets-1.0-2-g6b74572/assets/textures/ff.png",
+              "srcPosition": { "x":0, "y": 0, "z": 0 },
+              "srcSize": { "w": 2, "h": 2},
+              "destPosition": { "x":0, "y": 0, "z": 0 },
+              "destSize": { "w": 128, "h": 128}
+            }
+          }
+        ],
+        "bindings": [
+          [1, "src", 0, "src"],
+          [2, "src", 1, "video"],
+          [3, "texture", 2, "texture"],
+          [1, "enabled", 4, "state"],
+          [3, "aspect", 1, "aspect"],
+
+          [6, "painter", 7, "painter"],
+          [5, "texture", 6, "texture"],
+          [5, "aspect", 1, "aspect"],
+
+          [9, "painter", 10, "painter"],
+          [8, "texture", 9, "texture"],
+          [8, "visible", 4, "negated"],
+
+          [12, "painter", 13, "painter"],
+          [11, "texture", 12, "texture"],
+          [11, "visible", 4, "state"]
+        ],
+        "events": [
+          [4, "toggle", 3, "INTERACTION.CLICK"],
+          [0, "next", 11, "INTERACTION.CLICK"],
+          [12, "repaint", 13, "paint.ready"]
+        ]
+      }
+    ]
+  }
+}
